@@ -5,8 +5,9 @@ import userRoutes from '../backend/routes/user.routes.js'
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import connectToMongoDB from './db/connectToMongoDb.js';
+import {app,server} from './socket/socket.js'
 dotenv.config();
-const app = express();
+// const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json())
@@ -23,7 +24,7 @@ app.use('/api/users',userRoutes);
 
 
 
-app.listen(PORT,()=>{ 
+server.listen(PORT,()=>{ 
     connectToMongoDB();
     console.log("Listening on port 5000")
 
